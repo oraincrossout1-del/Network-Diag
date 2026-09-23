@@ -30,3 +30,7 @@ Unlike traditional web-based speed tests that buffer traffic and mask sub-second
 | **Route Analytics** | 15-Hop Traceroute | Maps every network hop to isolate CG-NAT gateways and external routing bottlenecks. |
 
 ---
+
+Ethernet cable network internet Icon by Icons-Land on <a href="https://icon-icons.com/authors/8-icons-land">Icon-Icons.com</a>
+
+Yes, i vibe coded this. just wanted a better tool for testing my net💀
