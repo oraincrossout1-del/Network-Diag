@@ -1,8 +1,8 @@
-# Network-Diag 🚀
+# Network Diag 🚀
 
 An advanced, automated multi-threaded network diagnostic tool built in Python.
 
-Unlike traditional web-based speed tests that buffer traffic and mask sub-second drops, **Network-Diag** performs concurrent stress testing across local, network, and application layers to detect micro-stutters, CG-NAT restrictions, and packet loss that ruin real-time competitive gaming.
+Unlike traditional web-based speed tests that buffer traffic and mask sub-second drops, **Network Diag** performs concurrent stress testing across local, network, and application layers to detect micro-stutters, CG-NAT restrictions, and packet loss that ruin real-time competitive gaming.
 
 ---
 
