@@ -1,3 +1,2 @@
-```text
+# Optional. With it the speedtest uses speedtest-cli; without it the built-in Cloudflare test is used.
 speedtest-cli
-pyinstaller
