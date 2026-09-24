@@ -1,20 +1,21 @@
-# Network Diag 🚀
+# Network-Diag 🚀
 
 An advanced, automated multi-threaded network diagnostic tool built in Python.
 
-Unlike traditional web-based speed tests that buffer traffic and mask sub-second drops, **Network Diag** performs concurrent stress testing across local, network, and application layers to detect micro-stutters, CG-NAT restrictions, and packet loss that ruin real-time competitive gaming.
+Unlike traditional web-based speed tests that buffer traffic and mask sub-second drops, **Network-Diag** performs concurrent stress testing across local, network, and application layers to detect micro-stutters, CG-NAT restrictions, packet loss, and bufferbloat that ruin real-time competitive gaming.
 
 ---
 
 ## 🌟 Features
 
-* **Network Quality Rating System:** Automatically grades connection quality into **GOOD**, **MEDIUM**, or **BAD** based on gaming, 4K streaming, and online meeting thresholds.
-* **Concurrent Multi-Layer Stress Testing:** Runs 5-minute parallel diagnostic threads to detect transient latency spikes without choking local bandwidth.
-* **Micro-Stutter Detection:** High-frequency (100ms) polling catches sub-second frame skips and lag spikes that standard 1-second pings miss.
-* **IP Intelligence & CG-NAT Detection:** Identifies IPv4, IPv6 support, and automatically scans traceroute hops for RFC 6598 carrier-grade NAT address space (`100.64.x.x`).
-* **Visual HTML Report:** Generates an interactive Chart.js dashboard displaying overlaid latency timelines, hop-by-hop route traces, and metric summaries.
-* **Cross-Platform:** Works out-of-the-box on Windows, macOS, and Linux for both Ethernet and Wi-Fi connections.
-* **Retro Terminal UI:** Features an animated console loading bar and real-time execution feedback.
+* **Strict Network Quality Rating:** Grades connection stability as **GOOD**, **MEDIUM**, or **BAD** using a strict "worst-case" policy—a single severe metric marks the entire network BAD.
+* **Modular Architecture:** Cleanly separated architecture (Probes, Analysis, Reporting) with CLI flag support (`--duration`, `--no-speedtest`).
+* **Micro-Stutter & Drop Detection:** High-frequency polling catches sub-second frame skips and lag spikes that standard pings miss.
+* **Bufferbloat & Jitter Analysis:** Measures latency inflation under load to expose network congestion caused by saturated bandwidth.
+* **Zero-Dependency Speed Testing:** Uses `speedtest-cli` if installed, or automatically falls back to an offline/built-in Cloudflare speed test (`speed.cloudflare.com`).
+* **IP Intelligence & CG-NAT Detection:** Detects IPv4, IPv6 support, and automatically scans traceroute hops for RFC 6598 carrier-grade NAT address space (`100.64.x.x`).
+* **Offline Self-Contained HTML Report:** Generates an interactive Chart.js dashboard displaying overlaid latency timelines, hop-by-hop route traces, and metric summaries that work completely offline.
+* **Cross-Platform:** Works out-of-the-box on Windows, macOS, and Linux (Python 3.8+) for both Ethernet and Wi-Fi connections.
 
 ---
 
@@ -22,15 +23,11 @@ Unlike traditional web-based speed tests that buffer traffic and mask sub-second
 
 | Test Module | Spec / Target | Purpose |
 | :--- | :--- | :--- |
-| **Bandwidth Test** | `speedtest-cli` | Measures raw Download (Mbps), Upload (Mbps), and Unloaded Ping before stress testing begins. |
+| **Bandwidth & Bufferbloat** | `speedtest-cli` / Cloudflare | Measures Download, Upload, Unloaded Ping, and latency inflation under load. |
 | **Local Hardware Check** | Default Gateway (1400B ICMP) | Audits local Ethernet cable, Wi-Fi signal, and router LAN ports. |
-| **ISP Line Stress** | `8.8.8.8` (1400B Heavy ICMP) | Simulates heavy packet loads to reveal line noise and MTU fragmentation. |
-| **Micro-Stutter Polling** | `8.8.8.8` (32B ICMP @ 100ms) | Rapid polling rate (10 pings/sec) to catch micro-stutters and instant drops. |
+| **ISP Line Stress** | `8.8.8.8` / `1.1.1.1` (1400B Heavy ICMP) | Simulates heavy packet loads to reveal line noise and MTU fragmentation. |
+| **Micro-Stutter Polling** | `8.8.8.8` (32B ICMP @ 100ms) | High-frequency polling (10 pings/sec) to catch micro-stutters and instant drops. |
 | **Application Layer** | TCP Port 443 | Measures application-layer TCP connection latency to monitor retransmission delays. |
 | **Route Analytics** | 15-Hop Traceroute | Maps every network hop to isolate CG-NAT gateways and external routing bottlenecks. |
 
 ---
-
-Ethernet cable network internet Icon by Icons-Land on <a href="https://icon-icons.com/authors/8-icons-land">Icon-Icons.com</a>
-
-Yes, i vibe coded this. just wanted a better tool for testing my net💀
